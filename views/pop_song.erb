@@ -1,0 +1,9 @@
+<h1>For pop songs</h1>
+
+<% subject = ["I", "we"] %>
+<% subject.shuffle! %>
+
+<% can = ["can", "can't"] %>
+<% can.shuffle! %>
+
+<p>As a user, I want to <%= "#{@lyrics}" %> so that <%= subject[0] %> <%= can[0] %> <%= "#{@more_lyrics}" %></p>

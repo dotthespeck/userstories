@@ -1,0 +1,9 @@
+<h1>For fun</h1>
+
+<% subject = ["I", "we"] %>
+<% subject.shuffle! %>
+
+<% can = ["can", "can't"] %>
+<% can.shuffle! %>
+
+<p>As a user, I want to <%= "#{@verb}" %> <%= "#{@phrase}" %> so that <%= subject[0] %> <%= can[0] %> <%= "#{@second_verb}" %> <%= "#{@second_phrase}" %></p>
