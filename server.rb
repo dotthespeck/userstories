@@ -25,6 +25,17 @@ end
 
 get '/for_fun' do
 
+  verb_list = CSV.read("huge_list_verbs.csv")
+  verb_list.shuffle!
+  @verb = verb_list[0].join
+  @second_verb = verb_list[1].join
+
+  phrase_list = CSV.read("huge_list_nouns.csv")
+  phrase_list.shuffle!
+  @phrase = phrase_list[0].join
+  @second_phrase = phrase_list[1].join
+
+
   erb :for_fun
 end
 
@@ -36,4 +47,14 @@ get '/pop_song' do
   @more_lyrics = songs[1].join
 
   erb :pop_song
+end
+
+get '/launch' do
+
+  info = CSV.read("launch.csv")
+  info.shuffle!
+  @launch = info[0].join
+  @more_launch = info[1].join
+
+erb :launch
 end
