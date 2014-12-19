@@ -36,9 +36,27 @@ def verb_phrase(file)
   @example2 = verb_phrase[1].join
 end
 
+def print_sentence(sentence)
+  new_array = []
+  new_array << sentence
+  new_array << 0
+  CSV.open("selected_sentences.csv", "a") do |csv|
+    csv << new_array
+  end
+end
+
+
 get '/' do
 
   erb :index
+end
+
+post '/' do
+
+  print_sentence(params)
+
+  redirect '/'
+
 end
 
 get '/industry' do
@@ -47,6 +65,7 @@ verb("work.csv")
 phrase("work_phrases.csv")
 
   @sentence = "As a user, I want to #{@verb} #{@phrase} so that #{subject} #{can} #{@second_verb} #{@second_phrase}"
+
 
   erb :industry
 end
@@ -67,8 +86,13 @@ get '/pop_song' do
 
   @sentence = "As a user, I want to #{@example1} so that #{subject} #{can} #{@example2}"
 
+  print_sentence(@sentence)
+
+binding.pry
+
   erb :pop_song
 end
+
 
 get '/launch' do
 
