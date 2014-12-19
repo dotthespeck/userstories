@@ -3,6 +3,39 @@ require 'sinatra/contrib'
 require 'csv'
 require 'pry'
 
+def can
+  can_array = ["can", "can't"]
+  can_array.shuffle!
+  can_array[0]
+end
+
+def subject
+  subject_array = ["I", "we"]
+  subject_array.shuffle!
+  subject_array[0]
+end
+
+def verb(file)
+  verb_list = CSV.read(file)
+  verb_list.shuffle!
+  @verb = verb_list[0].join
+  @second_verb = verb_list[1].join
+end
+
+def phrase(file)
+  phrase_list = CSV.read(file)
+  phrase_list.shuffle!
+  @phrase = phrase_list[0].join
+  @second_phrase = phrase_list[1].join
+end
+
+def verb_phrase(file)
+  verb_phrase = CSV.read(file)
+  verb_phrase.shuffle!
+  @example1 = verb_phrase[0].join
+  @example2 = verb_phrase[1].join
+end
+
 get '/' do
 
   erb :index
@@ -10,51 +43,38 @@ end
 
 get '/industry' do
 
-  verb_list = CSV.read("work.csv")
-  verb_list.shuffle!
-  @verb = verb_list[0].join
-  @second_verb = verb_list[1].join
+verb("work.csv")
+phrase("work_phrases.csv")
 
-  phrase_list = CSV.read("work_phrases.csv")
-  phrase_list.shuffle!
-  @phrase = phrase_list[0].join
-  @second_phrase = phrase_list[1].join
+  @sentence = "As a user, I want to #{@verb} #{@phrase} so that #{subject} #{can} #{@second_verb} #{@second_phrase}"
 
   erb :industry
 end
 
 get '/for_fun' do
 
-  verb_list = CSV.read("huge_list_verbs.csv")
-  verb_list.shuffle!
-  @verb = verb_list[0].join
-  @second_verb = verb_list[1].join
+verb("huge_list_verbs.csv")
+phrase("huge_list_nouns.csv")
 
-  phrase_list = CSV.read("huge_list_nouns.csv")
-  phrase_list.shuffle!
-  @phrase = phrase_list[0].join
-  @second_phrase = phrase_list[1].join
-
+@sentence = "As a user, I want to #{@verb} #{@phrase} so that #{subject} #{can} #{@second_verb} #{@second_phrase}"
 
   erb :for_fun
 end
 
 get '/pop_song' do
 
-  songs = CSV.read("songs.csv")
-  songs.shuffle!
-  @lyrics = songs[0].join
-  @more_lyrics = songs[1].join
+  verb_phrase("songs.csv")
+
+  @sentence = "As a user, I want to #{@example1} so that #{subject} #{can} #{@example2}"
 
   erb :pop_song
 end
 
 get '/launch' do
 
-  info = CSV.read("launch.csv")
-  info.shuffle!
-  @launch = info[0].join
-  @more_launch = info[1].join
+  verb_phrase("launch.csv")
+
+  @sentence = "As a user, I want to #{@example1} so that #{subject} #{can} #{@example2}"
 
 erb :launch
 end
