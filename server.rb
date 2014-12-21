@@ -78,3 +78,10 @@ get '/launch' do
 
 erb :launch
 end
+
+
+post '/' do
+  @saved_story = params[:sentence]
+  binding.pry
+
+end
