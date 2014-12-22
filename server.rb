@@ -90,7 +90,7 @@ post '/' do
 end
 
 post '/upvote' do
-  params[:name]
+  @story = params[:story]
   binding.pry
   redirect '/'
 end

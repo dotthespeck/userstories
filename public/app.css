@@ -33,6 +33,25 @@ a{
 
 }
 
+#arrow {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 20px 24px 20px;
+  border-color: transparent transparent #eceef1 transparent;
+  line-height: 0px;
+  _border-color: #000000 #000000 #eceef1 #000000;
+  _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');
+  display: inline;
+  margin: 0 0 0 0;
+  background-color: white;
+  box-sizing: content-box;
+  padding-top: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+}
+
 
 .large-12 columns{
 }
