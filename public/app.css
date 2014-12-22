@@ -69,3 +69,8 @@ ul{
   min-height:80px;
   background-color: white;
 }
+
+object{
+  width:20%;
+  hight:20%;
+}

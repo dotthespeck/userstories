@@ -38,7 +38,14 @@ def verb_phrase(file)
 end
 
 get '/' do
-
+  @stories_votes = {}
+  CSV.foreach("selected_sentences.csv", :headers => true) do |row|
+    @stories_votes[row['Story']] = row['Upvotes'].to_i
+  end
+  @stories_votes = @stories_votes.sort_by { |stories, votes| votes }
+  #@stories_votes.sort{|x,y| y[0] <=> x[0]}
+  @stories_votes = Hash[*@stories_votes.flatten]
+  binding.pry
   erb :index
 end
 
@@ -46,38 +53,30 @@ get '/industry' do
   @heading = "industry"
   verb("work.csv")
   phrase("work_phrases.csv")
-
   @sentence = "As a user, I want to #{@verb} #{@phrase} so that #{subject} #{can} #{@second_verb} #{@second_phrase}"
-
   erb :show
 end
 
 get '/for_fun' do
   @heading = "fun"
-verb("huge_list_verbs.csv")
-phrase("huge_list_nouns.csv")
-
+  verb("huge_list_verbs.csv")
+  phrase("huge_list_nouns.csv")
   @sentence = "As a user, I want to #{@verb} #{@phrase} so that #{subject} #{can} #{@second_verb} #{@second_phrase}"
-
   erb :show
 end
 
 get '/pop_song' do
   @heading = "Pop Songs"
   verb_phrase("songs.csv")
-
   @sentence = "As a user, I want to #{@example1} so that #{subject} #{can} #{@example2}"
-
   erb :show
 end
 
 get '/launch' do
   @heading = "Launch"
   verb_phrase("launch.csv")
-
   @sentence = "As a user, I want to #{@example1} so that #{subject} #{can} #{@example2}"
-
-erb :show
+  erb :show
 end
 
 
@@ -88,5 +87,10 @@ post '/' do
     csv << ["0", @saved_story]
   end
 
+  redirect '/'
+end
+
+post '/upvote' do
+  @stories_votes[]
   redirect '/'
 end
