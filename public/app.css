@@ -36,7 +36,8 @@ a{
 
 p{
   text-align:center;
-  font-color: #008CBA;
+  color: 9ea7b1;
+  font-family: "Whitney A", "Whitney B", wgh-avenir, Avenir, Verdana, Sans-serif;
 }
 
 .container{

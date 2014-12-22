@@ -22,10 +22,11 @@
           <div class="medium-4 large-4 text-center columns">
             <div class="panel">
               <p>
-                <a href="/upvote" method="POST" class="svg">
-                  <object data="/assets/upvote.svg" type="image/svg+xml" class="mailicon">
-                  </object>
-                </a>
+                <input type="hidden" name="sentence" value=<% story %>>
+                  <a href="/upvote" method="POST" class="svg">
+                    <object data="/assets/upvote.svg" type="image/svg+xml" class="mailicon">
+                    </object>
+                  </a>
                 <%= upvotes %>
               </p>
             </div>
@@ -43,8 +44,4 @@
     </div>
   </div>
 
-
-
-
-
-<input type="hidden" name="sentence" value=<>
+<!-- button to sort by newest -->

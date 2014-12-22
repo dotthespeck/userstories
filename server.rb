@@ -45,7 +45,6 @@ get '/' do
   @stories_votes = @stories_votes.sort_by { |stories, votes| votes }
   #@stories_votes.sort{|x,y| y[0] <=> x[0]}
   @stories_votes = Hash[*@stories_votes.flatten]
-  binding.pry
   erb :index
 end
 

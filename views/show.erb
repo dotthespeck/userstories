@@ -2,11 +2,15 @@
 
 <p><%= @sentence %></p>
 <div class="row">
-  <button type="button" onClick="window.location.href=window.location.href">New User Story</button>
+  <div class="large-12 columns">
+    <button class="button expand" type="button" onClick="window.location.href=window.location.href">New User Story</button>
+  </div>
 </div>
 <div class="row">
-  <form action='/' method='POST'>
-    <input id="sentence" type="hidden" name="sentence" value= "<%= @sentence %>" >
-    <button type='submit'>Save Story</button>
-  </form>
+  <div class="large-12 columns">
+    <form action='/' method='POST'>
+      <input id="sentence" type="hidden" name="sentence" value= "<%= @sentence %>" >
+      <button class="button expand" type='submit'>Save Story</button>
+    </form>
+  </div>
 </div>
