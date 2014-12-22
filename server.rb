@@ -60,21 +60,21 @@ get '/for_fun' do
   @heading = "fun"
   verb("huge_list_verbs.csv")
   phrase("huge_list_nouns.csv")
-  @sentence = "As a user, I want to #{@verb} #{@phrase} so that #{subject} #{can} #{@second_verb} #{@second_phrase}"
+  @sentence = "As a user, I want to #{@verb} #{@phrase} so that #{subject} #{can} #{@second_verb} #{@second_phrase}."
   erb :show
 end
 
 get '/pop_song' do
   @heading = "Pop Songs"
   verb_phrase("songs.csv")
-  @sentence = "As a user, I want to #{@example1} so that #{subject} #{can} #{@example2}"
+  @sentence = "As a user, I want to #{@example1} so that #{subject} #{can} #{@example2}."
   erb :show
 end
 
 get '/launch' do
   @heading = "Launch"
   verb_phrase("launch.csv")
-  @sentence = "As a user, I want to #{@example1} so that #{subject} #{can} #{@example2}"
+  @sentence = "As a user, I want to #{@example1} so that #{subject} #{can} #{@example2}."
   erb :show
 end
 
@@ -90,6 +90,7 @@ post '/' do
 end
 
 post '/upvote' do
-  @stories_votes[]
+  params[:name]
+  binding.pry
   redirect '/'
 end

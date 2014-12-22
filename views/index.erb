@@ -12,7 +12,7 @@
 <div class="row">
   <h1>Best User Stories</h1>
 
-  <div class="large-12 columns">
+  <div class="large-12 columns" id="stories">
     <div class="panel">
       <div class="row">
         <div class="medium-4 large-4 text-center columns"><div class="panel"><h3>Upvotes</h3></div></div>  <div class="panel"><h3>Story</h3></div>
@@ -21,27 +21,29 @@
         <div class="row">
           <div class="medium-4 large-4 text-center columns">
             <div class="panel">
-              <p>
-                <input type="hidden" name="sentence" value=<% story %>>
-                  <a href="/upvote" method="POST" class="svg">
-                    <object data="/assets/upvote.svg" type="image/svg+xml" class="mailicon">
-                    </object>
-                  </a>
+                <form action="/upvote" method="POST">
+                  <label>
+                    <input type="hidden" name="image" id="name" value= <%= story %> >
+                    <svg class="arrow" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 78 64.5" enable-background="new 0 0 78 64.5" xml:space="preserve">
+                    <polygon fill="#919191" stroke="#FFFFFF" stroke-miterlimit="10" points="68,51.4 13.2,51.4 40.5,12.8 40.5,13 "/>
+                    </svg>
+                  </label>
+                </form>
                 <%= upvotes %>
-              </p>
             </div>
           </div>
-          <div class="panel">
+          <div class="panel" id="story">
             <p>
               <%= story %>
             </p>
           </div>
         </div>
         <% end %>
-        <div class="panel">
-        </div>
       </div>
     </div>
   </div>
 
 <!-- button to sort by newest -->
+<!-- make a variable change when you push the button,
+have a seperate peice of html that prints directly from the csv when you order by newest -->
