@@ -1,10 +1,39 @@
 <h3>What kind of user story do you want?</h3>
 
-<ul>
-  <li><a href="/industry">Give me something I can show my boss</a></li>
-  <li><a href="/for_fun">Give me a totally random user story</a></li>
-  <li><a href="/pop_song">Help me write the next hit pop song</a></li>
-  <li><a href="/launch">I need a user story for the Launch winter cohort</a></li>
-</ul>
+<div class="large-12 columns">
+  <ul>
+    <li><a href="/industry">Give me something I can show my boss</a></li>
+    <li><a href="/for_fun">Give me a totally random user story</a></li>
+    <li><a href="/pop_song">Help me write the next hit pop song</a></li>
+    <li><a href="/launch">I need a user story for the Launch winter cohort</a></li>
+  </ul>
+</div>
 
-<h3>Highlights from the user stories</h3>
+<div class="row">
+  <h1>Best User Stories</h1>
+
+  <div class="large-12 columns">
+    <div class="panel">
+      <div class="row">
+        <div class="medium-4 large-4 text-center columns"><div class="panel"><h3>Upvotes</h3></div></div>  <div class="panel"><h3>Story</h3></div>
+      </div>
+
+      <% CSV.foreach("selected_sentences.csv", :headers => true) do |row| %>
+        <div class="row">
+          <div class="medium-4 large-4 text-center columns">
+            <div class="panel">
+              <p>
+                <%= row['Upvotes']%>
+              </p>
+            </div>
+          </div>
+          <div class="panel">
+            <p>
+              <%= row['Story'] %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    <div class="panel">
+  </div>
+</div>

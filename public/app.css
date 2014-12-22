@@ -1,15 +1,71 @@
-.top-bar{
-  min-height:80px;
-  background-color:  ;
-}
 
+
+body{
+  background-color: #eceef1;
+  font-family: "Whitney A", "Whitney B", wgh-avenir, Avenir, Verdana, Sans-serif;
+}
 h1{
   text-align:center;
-  font-size:44px;
-  color: ;
-  font-family: ;
+  font-size:50px;
+  color: 9ea7b1;
+  font-family: "Whitney A", "Whitney B", wgh-avenir, Avenir, Verdana, Sans-serif;
+
 }
 
+h2{
+  text-align:center;
+  font-size:40px;
+  color: 9ea7b1;
+  font-family: "Whitney A", "Whitney B", wgh-avenir, Avenir, Verdana, Sans-serif;
+}
+
+h3{
+  text-align:center;
+  font-size:20px;
+  color: 9ea7b1;
+  font-family: helvetica;
+}
+
+a{
+  text-align:center;
+  color: 9ea7b1;
+  font-family: "Whitney A", "Whitney B", wgh-avenir, Avenir, Verdana, Sans-serif;
+
+}
+
+
 p{
-  text-align:
+  text-align:center;
+  font-color: #008CBA;
+}
+
+.container{
+  margin-top:30px;
+  margin-bottom:30px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 700px;
+  padding: 20px 20px 20px 20px;
+  font-family: Garamond;
+  word-wrap: break-word;
+  background:#eceef1;
+}
+
+ul{
+  list-style:none;
+}
+
+.panel{
+  background-color:white;
+  padding: 20px 20px 20px 20px;
+}
+
+
+.button{
+  background:#ed197b;
+}
+
+.top-bar{
+  min-height:80px;
+  background-color: white;
 }

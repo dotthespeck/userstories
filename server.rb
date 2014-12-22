@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sinatra/contrib'
 require 'csv'
 require 'pry'
+require 'sinatra/reloader'
 
 def can
   can_array = ["can", "can't"]
@@ -42,46 +43,50 @@ get '/' do
 end
 
 get '/industry' do
-
-verb("work.csv")
-phrase("work_phrases.csv")
+  @heading = "industry"
+  verb("work.csv")
+  phrase("work_phrases.csv")
 
   @sentence = "As a user, I want to #{@verb} #{@phrase} so that #{subject} #{can} #{@second_verb} #{@second_phrase}"
 
-  erb :industry
+  erb :show
 end
 
 get '/for_fun' do
-
+  @heading = "fun"
 verb("huge_list_verbs.csv")
 phrase("huge_list_nouns.csv")
 
-@sentence = "As a user, I want to #{@verb} #{@phrase} so that #{subject} #{can} #{@second_verb} #{@second_phrase}"
+  @sentence = "As a user, I want to #{@verb} #{@phrase} so that #{subject} #{can} #{@second_verb} #{@second_phrase}"
 
-  erb :for_fun
+  erb :show
 end
 
 get '/pop_song' do
-
+  @heading = "Pop Songs"
   verb_phrase("songs.csv")
 
   @sentence = "As a user, I want to #{@example1} so that #{subject} #{can} #{@example2}"
 
-  erb :pop_song
+  erb :show
 end
 
 get '/launch' do
-
+  @heading = "Launch"
   verb_phrase("launch.csv")
 
   @sentence = "As a user, I want to #{@example1} so that #{subject} #{can} #{@example2}"
 
-erb :launch
+erb :show
 end
 
 
 post '/' do
   @saved_story = params[:sentence]
-  binding.pry
 
+  CSV.open("selected_sentences.csv","a+") do |csv|
+    csv << ["0", @saved_story]
+  end
+
+  redirect '/'
 end
