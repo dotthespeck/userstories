@@ -1,0 +1,116 @@
+
+
+body{
+  background-color: #eceef1;
+  font-family: "Whitney A", "Whitney B", wgh-avenir, Avenir, Verdana, Sans-serif;
+}
+h1{
+  text-align:center;
+  font-size:50px;
+  color: 9ea7b1;
+  font-family: "Whitney A", "Whitney B", wgh-avenir, Avenir, Verdana, Sans-serif;
+
+}
+
+h2{
+  text-align:center;
+  font-size:40px;
+  color: 9ea7b1;
+  font-family: "Whitney A", "Whitney B", wgh-avenir, Avenir, Verdana, Sans-serif;
+}
+
+h3{
+  text-align:center;
+  font-size:20px;
+  color: 9ea7b1;
+  font-family: helvetica;
+}
+
+a{
+  text-align:center;
+  color: 9ea7b1;
+  font-family: "Whitney A", "Whitney B", wgh-avenir, Avenir, Verdana, Sans-serif;
+
+}
+
+#arrow {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 20px 24px 20px;
+  border-color: transparent transparent #eceef1 transparent;
+  line-height: 0px;
+  _border-color: #000000 #000000 #eceef1 #000000;
+  _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');
+  display: inline;
+  margin: 0 0 0 0;
+  background-color: white;
+  box-sizing: content-box;
+  padding-top: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+}
+
+
+.large-12 columns{
+}
+
+
+p{
+  text-align:center;
+  color: 9ea7b1;
+  font-family: "Whitney A", "Whitney B", wgh-avenir, Avenir, Verdana, Sans-serif;
+}
+
+.center{
+  text-align:center;
+  color: 9ea7b1;
+  font-family: "Whitney A", "Whitney B", wgh-avenir, Avenir, Verdana, Sans-serif;
+}
+
+.container{
+  margin-top:30px;
+  margin-bottom:30px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 780px;
+  padding: 20px 20px 20px 20px;
+  font-family: Garamond;
+  word-wrap: break-word;
+  background:#eceef1;
+  text-align:center;
+}
+
+ul{
+  list-style:none;
+}
+
+.panel{
+  background-color:white;
+  padding: 20px 20px 20px 20px;
+  padding-right:50px;
+  border:none;
+ }
+
+
+.button{
+/*   background:#ed197b; */
+background:#0099ff;
+}
+
+.top-bar{
+  min-height:80px;
+  background-color: white;
+}
+
+.arrow{
+  width:20%;
+  hight:20%;
+  display: inline-block;
+}
+
+.story{
+  color: black;
+
+}

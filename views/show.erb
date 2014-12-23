@@ -1,0 +1,17 @@
+<h2><%= @heading  %></h2>
+
+<p><%= @sentence %></p>
+
+<div class="row">
+  <div class="medium-12 large-12 columns">
+    <button class="button expand" type="button" onClick="window.location.href=window.location.href">New User Story</button>
+  </div>
+</div>
+<div class="row">
+  <div class="medium-12 large-12 columns">
+    <form action='/' method='POST'>
+      <input id="sentence" type="hidden" name="sentence" value= "<%= @sentence %>" >
+      <button class="button expand" type='submit'>Save Story</button>
+    </form>
+  </div>
+</div>
