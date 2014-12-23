@@ -54,6 +54,11 @@ get '/industry' do
   phrase("work_phrases.csv")
   @sentence = "As a user, I want to #{@verb} #{@phrase} so that #{subject} #{can} #{@second_verb} #{@second_phrase}"
   erb :show
+
+
+
+  erb :industry
+  erb :show
 end
 
 get '/for_fun' do
@@ -70,6 +75,39 @@ get '/pop_song' do
   @sentence = "As a user, I want to #{@example1} so that #{subject} #{can} #{@example2}."
   erb :show
 end
+
+get '/launch' do
+  @heading = "Launch"
+  verb_phrase("launch.csv")
+  @sentence = "As a user, I want to #{@example1} so that #{subject} #{can} #{@example2}."
+  erb :show
+end
+
+
+post '/' do
+  @saved_story = params[:sentence]
+
+  CSV.open("selected_sentences.csv","a+") do |csv|
+    csv << ["0", @saved_story]
+  end
+
+  redirect '/'
+end
+
+get '/pop_song' do
+
+  @sentence = "As a user, I want to #{@example1} so that #{subject} #{can} #{@example2}"
+
+  print_sentence(@sentence)
+
+  binding.pry
+
+  erb :pop_song
+
+  @sentence = "As a user, I want to #{@example1} so that #{subject} #{can} #{@example2}."
+  erb :show
+end
+
 
 get '/launch' do
   @heading = "Launch"
