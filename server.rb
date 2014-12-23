@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sinatra/contrib'
 require 'csv'
 require 'pry'
+require 'sinatra/reloader'
 
 def can
   can_array = ["can", "can't"]
@@ -36,69 +37,61 @@ def verb_phrase(file)
   @example2 = verb_phrase[1].join
 end
 
-def print_sentence(sentence)
-  new_array = []
-  new_array << sentence
-  new_array << 0
-  CSV.open("selected_sentences.csv", "a") do |csv|
-    csv << new_array
-  end
-end
-
-
 get '/' do
-
+  @stories_votes = {}
+  CSV.foreach("selected_sentences.csv", :headers => true) do |row|
+    @stories_votes[row['Story']] = row['Upvotes'].to_i
+  end
+  @stories_votes = @stories_votes.sort_by { |stories, votes| votes }
+  #@stories_votes.sort{|x,y| y[0] <=> x[0]}
+  @stories_votes = Hash[*@stories_votes.flatten]
   erb :index
 end
 
-post '/' do
-
-  print_sentence(params)
-
-  redirect '/'
-
-end
-
 get '/industry' do
-
-verb("work.csv")
-phrase("work_phrases.csv")
-
+  @heading = "industry"
+  verb("work.csv")
+  phrase("work_phrases.csv")
   @sentence = "As a user, I want to #{@verb} #{@phrase} so that #{subject} #{can} #{@second_verb} #{@second_phrase}"
-
-
-  erb :industry
+  erb :show
 end
 
 get '/for_fun' do
-
-verb("huge_list_verbs.csv")
-phrase("huge_list_nouns.csv")
-
-@sentence = "As a user, I want to #{@verb} #{@phrase} so that #{subject} #{can} #{@second_verb} #{@second_phrase}"
-
-  erb :for_fun
+  @heading = "fun"
+  verb("huge_list_verbs.csv")
+  phrase("huge_list_nouns.csv")
+  @sentence = "As a user, I want to #{@verb} #{@phrase} so that #{subject} #{can} #{@second_verb} #{@second_phrase}."
+  erb :show
 end
 
 get '/pop_song' do
-
+  @heading = "Pop Songs"
   verb_phrase("songs.csv")
+  @sentence = "As a user, I want to #{@example1} so that #{subject} #{can} #{@example2}."
+  erb :show
+end
 
-  @sentence = "As a user, I want to #{@example1} so that #{subject} #{can} #{@example2}"
-
-  print_sentence(@sentence)
-
-binding.pry
-
-  erb :pop_song
+get '/launch' do
+  @heading = "Launch"
+  verb_phrase("launch.csv")
+  @sentence = "As a user, I want to #{@example1} so that #{subject} #{can} #{@example2}."
+  erb :show
 end
 
 
-get '/launch' do
+post '/' do
+  @saved_story = params[:sentence]
 
-  verb_phrase("launch.csv")
+  CSV.open("selected_sentences.csv","a+") do |csv|
+    csv << ["0", @saved_story]
+  end
 
-  @sentence = "As a user, I want to #{@example1} so that #{subject} #{can} #{@example2}"
+  redirect '/'
+end
 
-erb :launch
+post '/upvote' do
+  @story = params[:story]
+  #add a story to the csv
+  binding.pry
+  redirect '/'
 end
