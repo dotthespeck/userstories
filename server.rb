@@ -91,6 +91,7 @@ end
 
 post '/upvote' do
   @story = params[:story]
+  #add a story to the csv
   binding.pry
   redirect '/'
 end

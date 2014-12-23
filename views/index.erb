@@ -24,6 +24,7 @@
             <div class="panel">
                 <form action="/upvote" method="POST">
                     <input type="hidden" name="story" value= "<%= story %>" />
+                    <input type="hidden" name="ip" value= "<%= request.ip %>" />
                     <button id="arrow" type='submit'> </button>
 
                 </form>
