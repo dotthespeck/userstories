@@ -1,8 +1,10 @@
 require 'sinatra'
-require 'sinatra/contrib'
 require 'csv'
 require 'pry'
 require 'sinatra/reloader'
+require 'sinatra/activerecord'
+require 'sinatra/base'
+
 
 def can
   can_array = ["can", "can't"]
