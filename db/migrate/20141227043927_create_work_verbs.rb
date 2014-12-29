@@ -1,7 +1,7 @@
 class CreateWorkVerbs < ActiveRecord::Migration
   def change
     create_table :work_verbs do |t|
-      t.sting :verb
+      t.string :verb, null: false
     end
   end
 end
